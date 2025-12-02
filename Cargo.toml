@@ -1,0 +1,37 @@
+[package]
+name = "init"
+version = "0.1.0"
+edition = "2024"
+
+[lints.rust]
+unsafe_code = "warn"              # 小团队可能偶尔需要 unsafe
+
+[lints.clippy]
+# 基础检查，不开 pedantic（太啰嗦）
+all = "warn"
+
+# === 捕获真正的 bug ===
+unwrap_used = "warn"              # 提醒处理错误，但允许快速原型
+expect_used = "allow"             # expect 带消息，可以接受
+panic = "warn"
+indexing_slicing = "warn"         # 防止越界
+
+# === 开发阶段允许，上线前清理 ===
+todo = "warn"
+dbg_macro = "warn"
+print_stdout = "allow"            # 开发时允许 println 调试
+
+# === 代码质量 ===
+clone_on_ref_ptr = "warn"         # Arc/Rc 显式 clone
+needless_pass_by_value = "warn"
+unnecessary_wraps = "warn"
+redundant_closure = "warn"
+
+# === 明确放宽（避免无谓争论）===
+missing_errors_doc = "allow"      # 文档要求放宽
+missing_panics_doc = "allow"
+module_name_repetitions = "allow" # user::User 这种命名允许
+too_many_arguments = "allow"      # 暂不限制参数数量
+must_use_candidate = "allow"
+
+[dependencies]

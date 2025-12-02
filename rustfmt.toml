@@ -1,0 +1,12 @@
+edition = "2024"
+max_width = 100
+tab_spaces = 4
+newline_style = "Unix"
+
+# 自动整理 imports，避免手动排序争论
+imports_granularity = "Crate"
+group_imports = "StdExternalCrate"
+reorder_imports = true
+
+# 简写风格
+use_field_init_shorthand = true
